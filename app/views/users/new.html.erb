@@ -1,0 +1,14 @@
+<div class="card">
+  <h1 style="text-decoration:underline;">New User</h1>
+  
+  <%= render "form", user: @user %>
+  
+  <br>
+  
+  <div>
+    
+    <%= link_to users_path, class: "btn btn-maroon",title: "Edit User" do %>
+    <%= image_tag 'back-arrow.png', alt: 'Logo', class: 'white-fil small-icon' %>
+    <% end %>
+  </div>
+</div>

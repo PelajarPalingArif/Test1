@@ -1,0 +1,44 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>List of Phone Numbers</h1>
+<div class="table-pn table">
+  <div class="head">
+    <div class="first th">ID</div>
+    <div class="th">Value</div>
+    <div class="th">UserID</div>
+    <div class="th">Action</div>
+  </div>
+  <% @phone_numbers.each do |phone_number| %>
+  <div class="row">
+    <div class="td"><%=phone_number.id%></div>
+    <div class="td"><%=phone_number.value%></div>
+    <div class="td"><%=phone_number.user_id%></div>
+    <div class="td action-col">
+      
+        <div>
+          <%= link_to phone_number, class: "btn btn-green",title: "Phone Number Details" do %>
+          <%= image_tag 'details.png', alt: 'Logo', class: 'white-fil small-icon' %>
+          <% end %>
+        </div>
+        <div>
+          <%= button_to phone_number, method: :delete,title: "Delete Phone Number", class:"btn btn-red" do %>
+          <%= image_tag 'delete.png', alt: 'Logo', class: 'white-fil small-icon' %>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to edit_phone_number_path(phone_number), class: "btn",title: "Edit Phone Number" do %>
+          <%= image_tag 'edit.png', alt: 'Logo', class: 'white-fil small-icon' %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+<div class="contain-60">
+<%= link_to new_phone_number_path, class: "btn",style: 'align-self:end',title: "Add User" do %>
+  <%= image_tag 'plus.png', alt: 'Logo', class: 'white-fil medium-icon' %>
+<% end %>
+</div>
+

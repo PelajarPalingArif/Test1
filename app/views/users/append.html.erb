@@ -1,0 +1,14 @@
+<div class="card">
+  <h1>Adding Phone Number</h1>
+
+<%= render "form_phone_add", phone_number: @phone_number %></div>
+
+<br>
+
+<div>
+  <%= link_to @user, class: "btn btn-maroon",title: "Back" do %>
+  <%= image_tag 'back-arrow.png', alt: 'Logo', class: 'white-fil small-icon' %>
+  <% end %>
+  <%# <%= link_to "Show this user", @user %> 
+  <%# <%= link_to "Back to users", users_path %>
+</div>

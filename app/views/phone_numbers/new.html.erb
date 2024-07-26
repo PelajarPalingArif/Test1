@@ -1,0 +1,17 @@
+<div class="card">
+<h1 style="text-decoration:underline;">New Phone Number</h1>
+
+<%= render "form", phone_number: @phone_number %>
+
+<br>
+
+<div>
+  <div>
+    <%= link_to phone_numbers_path, class: "btn btn-maroon",title: "Edit User" do %>
+    <%= image_tag 'back-arrow.png', alt: 'Logo', class: 'white-fil small-icon' %>
+    <% end %>
+  </div>
+  <%# <%= link_to "Back to phone numbers", phone_numbers_path %> 
+</div>
+</div>
+

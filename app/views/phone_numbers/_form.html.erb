@@ -1,0 +1,32 @@
+<%= form_with(model: phone_number) do |form| %>
+  <% if phone_number.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(phone_number.errors.count, "error") %> </h2>
+
+      <ul>
+        <% phone_number.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-wrap">
+    <%= form.label :value, style: "display: block" %>
+    <%= form.text_field :value %>
+  </div>
+  <div class="input-wrap">
+    <%= form.label :user_id, style: "display: block" %>
+    <% if phone_number.user_id.present? %>
+      <%= form.text_field :user_id, value: phone_number.user_id, disabled: true %>
+    <% else %>
+      <%= form.collection_select :user_id, User.all, :id, :id_name, prompt: 'Select a user' %>
+    <% end %>
+
+  </div>
+
+  <div class="input-wrap">
+    <div></div>
+    <%= form.submit "Submit", class: "btn btn-primary"%>
+  </div>
+<% end %>

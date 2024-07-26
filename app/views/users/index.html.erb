@@ -1,0 +1,65 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>List of Users</h1>
+
+<div class="table-us table">
+  <div class="head">
+    <div class="first th">ID</div>
+    <div class="th">Name</div>
+    <div class="th">Email</div>
+    <div class="th">Phone Number</div>
+    <div class="th">Address</div>
+    <div class="th">City</div>
+    <div class="th">State</div>
+    <div class="th">Action</div>
+  </div>
+
+  <% @users.each do |user| %>
+    <div class="row">
+      <div class="td"><span><%=user.id%></span></div>
+      <div class="td"><span><%=user.name%></span></div>
+      <div class="td"><span><%=user.email%></span></div>
+      <div class="td pn-col">
+        <% user.phone_numbers.each do |phone_number| %>
+          <div><%= phone_number.value %></div>
+        <% end %>
+      </div>
+  
+
+      <div class="td"><span><%=user.address%></span></div>
+      <div class="td"><span><%=user.city%></span></div>
+      <div class="td"><span><%=user.state%></span></div>
+      <div class="td action-col">
+        <div>
+              <%= link_to user, class: "btn btn-green",title: "User Details" do %>
+              <%= image_tag 'details.png', alt: 'Logo', class: 'white-fil small-icon' %>
+              <% end %>
+              </div>
+              <div>
+              <%= button_to user, method: :delete,title: "Delete User", class:"btn btn-red" do %>
+              <%= image_tag 'delete.png', alt: 'Logo', class: 'white-fil small-icon' %>
+              <% end %>
+              </div>
+              <div>
+              <%= link_to edit_user_path(user), class: "btn",title: "Edit User" do %>
+              <%= image_tag 'edit.png', alt: 'Logo', class: 'white-fil small-icon' %>
+              <% end %>
+              </div>
+
+      </div>
+    
+      
+    </div>
+
+  <% end %>
+</div>
+
+
+
+<div class="contain-80">
+  <%= link_to new_user_path, class: "btn",style: 'align-self:end',title: "Add User" do %>
+    <%= image_tag 'plus.png', alt: 'Logo', class: 'white-fil medium-icon' %>
+  <% end %>
+</div>
+
+

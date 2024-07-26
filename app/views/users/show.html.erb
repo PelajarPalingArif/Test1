@@ -1,0 +1,50 @@
+<p style="color: green"><%= notice %></p>
+<h1><%= @user.name %></h1>
+<div>
+<p>Contact : </p>
+<ul>
+  <% if @user.phone_numbers.any? %>
+      <% @user.phone_numbers.each do |phone_number| %>
+       <li>
+        <div class="li-wrap">
+          <%= phone_number.value %>
+          <div>
+            <%= link_to "Edit", edit_phone_number_path(phone_number),style:"text-decoration:underline" %>
+            <%= button_to "Remove", phone_number,class: "link",style:"text-decoration:underline", method: :delete  %>
+          </div>
+        </div>
+       </li>
+     <% end %>
+  <% else %>
+    <p>No phone numbers available.</p>
+  <% end %>
+</ul>
+  <div style="display:flex;flex-direction:row-reverse;">
+    <%= link_to "#{@user.id}/append", class: "btn",style: 'align-self:end',title: "Add Phone Number" do %>
+    <%= image_tag 'plus.png', alt: 'Logo', class: 'white-fil small-icon' %>
+    <% end %>
+  </div>
+<p>Email: <%= @user.email %></p>
+<p>Address: <%= @user.address %></p>
+<p>City: <%= @user.city %></p>
+<p>State: <%= @user.state %></p>
+</div>
+
+
+<div class="flex-center-center">
+  <div>
+    <%= link_to edit_user_path(@user), class: "btn",title: "Edit User" do %>
+    <%= image_tag 'edit.png', alt: 'Logo', class: 'white-fil small-icon' %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to users_path, class: "btn btn-maroon",title: "Back" do %>
+    <%= image_tag 'back-arrow.png', alt: 'Logo', class: 'white-fil small-icon' %>
+    <% end %>
+  </div>
+  <div>
+    <%= button_to @user, method: :delete,title: "Delete User", class:"btn btn-red" do %>
+    <%= image_tag 'delete.png', alt: 'Logo', class: 'white-fil small-icon' %>
+    <% end %>
+  </div>
+</div>
